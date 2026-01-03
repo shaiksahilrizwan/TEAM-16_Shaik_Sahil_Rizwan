@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Device Recommender</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📱 AI Phone Assistant</h1>
+            <p>Find the perfect device based on specs and your intent.</p>
+        </header>
+
+        <main>
+            <!-- Input Form -->
+            <section class="form-section">
+                <form id="recForm">
+                    
+                    <!-- 1. Budget Selection -->
+                    <div class="form-group">
+                        <label>Budget Range (Select multiple)</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-btn">
+                                <input type="checkbox" name="budget" value="0"> Low Cost
+                            </label>
+                            <label class="checkbox-btn">
+                                <input type="checkbox" name="budget" value="1"> Medium
+                            </label>
+                            <label class="checkbox-btn">
+                                <input type="checkbox" name="budget" value="2"> High End
+                            </label>
+                            <label class="checkbox-btn">
+                                <input type="checkbox" name="budget" value="3"> Premium
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 2. Hard Constraints -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="minRam">Min RAM (MB)</label>
+                            <input type="number" id="minRam" placeholder="e.g. 3000">
+                        </div>
+                        <div class="form-group toggle-group">
+                            <label class="switch">
+                                <input type="checkbox" id="require4G">
+                                <span class="slider round"></span>
+                            </label>
+                            <span class="toggle-label">Requires 4G</span>
+                        </div>
+                    </div>
+
+                    <!-- 3. User Intent (Text) -->
+                    <div class="form-group">
+                        <label for="userIntent">Describe your needs</label>
+                        <textarea id="userIntent" rows="4" placeholder="I need a phone for gaming that doesn't overheat..."></textarea>
+                    </div>
+
+                    <button type="submit" id="submitBtn">Get Recommendation</button>
+                </form>
+            </section>
+
+            <!-- Results Display -->
+            <section id="resultSection" class="hidden">
+                <h2>Recommendation</h2>
+                <div id="loadingSpinner" class="hidden">Thinking...</div>
+                
+                <div id="outputContent">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="badge" id="resId">ID: --</span>
+                            <span class="score" id="resScore">Confidence: --%</span>
+                        </div>
+                        <h3 id="resDevice">Selected Device</h3>
+                        <p class="intent-echo">" <span id="resIntent"></span> "</p>
+                        
+                        <div class="reasoning-box">
+                            <h4>Why this phone?</h4>
+                            <p id="resReasoning">...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Raw JSON toggle -->
+                    <details>
+                        <summary>View Raw JSON</summary>
+                        <pre id="rawJson"></pre>
+                    </details>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

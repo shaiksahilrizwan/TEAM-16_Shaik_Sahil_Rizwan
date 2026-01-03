@@ -44,7 +44,7 @@ def get_device_recommendation(user_input: dict) -> dict:
     TEST_PATH = "model/data/test.csv"
     
     # use the env instead of this approch
-    API_KEY = ""  
+    API_KEY = "AIzaSyDo8UX081ZV9XwbfQ_t82wwkmwpDTEBR5Q"  
     
     # run once
     global _MODEL_CACHE
@@ -52,7 +52,7 @@ def get_device_recommendation(user_input: dict) -> dict:
     if _MODEL_CACHE["rf_model"] is None:
         print("Initializing System: Loading Data and Training Model...")
         try:
-            # Load Training Data
+             # Load Training Data
             if not os.path.exists(TRAIN_PATH):
                 return {"error": f"Train file not found at {TRAIN_PATH}"}
             

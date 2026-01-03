@@ -7,9 +7,7 @@ import os
 from model.Model import get_device_recommendation
 
 app = FastAPI(title="Device Recommendation API")
-
-# 1. Mount the 'frontend' folder to serve static assets (css, js, images)
-#    This allows <script src="/static/script.js"> to work if you put assets in frontend/static
+#Mounting static files
 app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
 # Define Input Schema
@@ -18,8 +16,7 @@ class UserInput(BaseModel):
     requires_4g: bool = Field(False, description="Whether 4G is required")
     min_ram: int = Field(0, description="Minimum RAM in MB")
     user_intent: str = Field(..., description="Text description of user needs")
-
-# 2. Serve index.html at the root URL
+# serve endpoint
 @app.get("/")
 def read_root():
     return FileResponse('frontend/index.html')
@@ -33,5 +30,3 @@ def recommend_device(input_data: UserInput):
         raise HTTPException(status_code=400, detail=result["error"])
         
     return result
-
-# To run: uvicorn main:app --reload

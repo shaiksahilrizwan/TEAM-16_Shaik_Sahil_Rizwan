@@ -17,26 +17,30 @@ It operates in a two-stage pipeline:
 1.  **Quantitative Analysis (ML):** We use a **Random Forest Classifier** to predict the price range of devices in our dataset. This allows us to intelligently filter thousands of options down to a "shortlist" of valid candidates based on the user's budget and hard constraints (RAM, 4G support).
 2.  **Qualitative Analysis (GenAI):** We use **Google Gemini (via LangChain)** to act as a sales consultant. The LLM analyzes the shortlisted devices against the user's natural language intent (e.g., "I need a lightweight phone") to select the single best winner and explain the choice.
 
-### Key Features
+## Key Features
 *   **Predictive Pricing:** Uses Scikit-Learn to categorize unlabelled devices into price tiers (Low, Medium, High, Premium).
 *   **Smart Specs Filtering:** Automatically filters out devices that don't meet minimum RAM or connectivity requirements.
 *   **Context-Aware Recommendation:** The AI understands nuances like "good for gaming" implies high RAM and battery, even if the user didn't explicitly set numbers.
 *   **Full-Stack Interface:** A clean, modern Web UI (HTML/CSS/JS) powered by a high-performance FastAPI backend.
-
+  
+## Prerequisites
+*   Python 3.10+
+*   Google Gemini API Key
+  
 ## 🛠️ Tech Stack
 *   **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
 *   **Backend:** Python, FastAPI
 *   **Machine Learning:** Scikit-Learn (Random Forest Classifier), Pandas
 *   **Generative AI:** LangChain, Google Gemini Pro
 *   **Data Processing:** NumPy
+  
+## 🚀 How to Run Locally
+*   Clone the repo
+*   Install the dependencies through requirments.txt
+*   Add Gemini API key
+*   run the Fast-API server with uvicorn
 
 ## 👥 Team Members
 *   Shaik Sahil Rizwan
 *   Shaik Mohammad Akmal
 *   Shaik Mohammad Siddiq
-
-## 🚀 How to Run Locally
-
-### 1. Prerequisites
-*   Python 3.10+
-*   Google Gemini API Key

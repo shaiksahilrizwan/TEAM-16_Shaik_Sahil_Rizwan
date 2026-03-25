@@ -1,27 +1,28 @@
 :root {
-    --primary: #2563eb;
-    --primary-hover: #1d4ed8;
-    --bg: #f3f4f6;
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --primary-rgb: 79, 70, 229;
+    --bg: #eef2ff;
     --surface: #ffffff;
-    --text-main: #1f2937;
-    --text-muted: #6b7280;
-    --border: #e5e7eb;
+    --text-main: #111827;
+    --text-muted: #4b5563;
+    --border: #e2e8f0;
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--bg);
+    background: radial-gradient(circle at top right, #e0e7ff 0%, var(--bg) 45%, #f8fafc 100%);
     color: var(--text-main);
     margin: 0;
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 24px;
 }
 
 .container {
     width: 100%;
-    max-width: 550px;
+    max-width: 760px;
 }
 
 /* Header */
@@ -53,9 +54,9 @@ header p {
 /* Cards */
 .card {
     background: var(--surface);
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 10px 25px -10px rgba(15, 23, 42, 0.16);
     margin-bottom: 20px;
     border: 1px solid var(--border);
 }
@@ -99,18 +100,18 @@ label {
 
 .checkbox-btn span {
     display: block;
-    padding: 10px;
+    padding: 12px;
     text-align: center;
-    background: #f9fafb;
+    background: #f8fafc;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 0.9rem;
     transition: all 0.2s;
 }
 
 .checkbox-btn input:checked + span {
-    background: #eff6ff;
+    background: #eef2ff;
     border-color: var(--primary);
     color: var(--primary);
     font-weight: 600;
@@ -121,7 +122,7 @@ input[type="number"], textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 10px;
     font-family: inherit;
     box-sizing: border-box;
 }
@@ -182,14 +183,19 @@ button[type="submit"] {
     color: white;
     border: none;
     padding: 14px;
-    border-radius: 8px;
+    border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
     font-size: 1rem;
+    box-shadow: 0 10px 18px -10px rgba(var(--primary-rgb), 0.25);
 }
 
-button[type="submit"]:hover { background-color: var(--primary-hover); }
+button[type="submit"]:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 22px -10px rgba(var(--primary-rgb), 0.28);
+}
 button[type="submit"]:disabled { background-color: #9ca3af; cursor: not-allowed; }
 
 /* Results */
@@ -284,8 +290,43 @@ button[type="submit"]:disabled { background-color: #9ca3af; cursor: not-allowed;
     background: white;
     border: 1px solid var(--border);
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
     font-weight: 500;
 }
 .reset-btn:hover { background: #f9fafb; }
+
+@media (max-width: 768px) {
+    body {
+        padding: 16px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .toggle-container {
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .checkbox-group {
+        grid-template-columns: 1fr;
+    }
+
+    .result-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
